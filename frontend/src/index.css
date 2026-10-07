@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+@import "tailwindcss";
+
+body {
+  direction: rtl;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #000000; /* أسود فخم */
+  color: white;
+}
+
+/* حركة الخلفية للـ Hero Section */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-hero-bg {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #000000, #1e1b4b);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
