@@ -1,22 +1,42 @@
 import { useState } from 'react';
 import { ShieldAlert, Mail, Lock } from 'lucide-react';
+import axios from 'axios'; // تأكد من استيراد axios
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // حالة جديدة لعرض الأخطاء للمستخدم
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Admin Login Attempt:", { email, password });
-    // هنا هنربط بالباك إند بعدين لتوجيه الآدمن للوحة التحكم
+    setError(''); // تفريغ أي خطأ سابق
+
+    try {
+      // إرسال الطلب للباك إند المرفوع على Vercel
+      const response = await axios.post('https://watches-store-iml4.vercel.app/api/auth/login', {
+        email,
+        password
+      });
+
+      console.log("تم تسجيل الدخول بنجاح:", response.data);
+      
+      // هنا يمكنك حفظ التوكن (Token) في المتصفح إذا كان الباك إند يرسله
+      // localStorage.setItem('token', response.data.token);
+      
+      // وتوجيه المستخدم للوحة التحكم
+      // window.location.href = '/dashboard'; أو استخدام useNavigate
+
+    } catch (err) {
+      console.error("خطأ في تسجيل الدخول:", err);
+      // عرض رسالة الخطأ القادمة من الباك إند (مثل: الباسورد غلط)
+      setError(err.response?.data?.message || 'حدث خطأ في الاتصال بالسيرفر');
+    }
   };
 
   return (
     <div className="min-h-[calc(100vh-73px)] flex items-center justify-center bg-[#0f172a] py-12 px-4">
-      {/* كارت تسجيل الدخول بخلفية بيضاء جوا خلفية الموقع الغامقة */}
       <div className="bg-white p-8 md:p-10 shadow-2xl w-full max-w-md border-t-4 border-amber-600">
         
-        {/* أيقونة وعنوان الآدمن */}
         <div className="text-center mb-8 flex flex-col items-center">
           <div className="bg-amber-100 p-3 rounded-full mb-4">
             <ShieldAlert size={32} className="text-amber-600" />
@@ -25,8 +45,14 @@ const Login = () => {
           <p className="text-zinc-500 mt-2 text-sm font-medium tracking-wider">AUTHORIZED PERSONNEL ONLY</p>
         </div>
 
+        {/* عرض رسالة الخطأ باللون الأحمر في حالة وجودها */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 border border-red-400 rounded text-center">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
-          
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
               <Mail size={20} />
