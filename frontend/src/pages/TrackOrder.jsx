@@ -9,7 +9,7 @@ export default function TrackOrder() {
     const handleTrack = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.get(`https://watches-store-iml4.vercel.app//api/orders/track/${phone}`);
+            const res = await axios.get(`https://watches-store-iml4.vercel.app/api/orders/track/${phone}`);
             setOrders(res.data);
             setSearched(true);
         } catch (err) {

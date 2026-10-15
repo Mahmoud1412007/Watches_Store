@@ -16,7 +16,7 @@ const [expectedDate, setExpectedDate] = useState(''); // ضيف المتغير �
     const handleCheckout = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://watches-store-iml4.vercel.app//api/orders', {
+            const res = await axios.post('https://watches-store-iml4.vercel.app/api/orders', {
                 ...formData,
                 total_amount: total,
                 items: cartItems

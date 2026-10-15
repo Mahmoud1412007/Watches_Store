@@ -11,7 +11,7 @@ export default function UsersManager() {
 
     const fetchUsers = async () => {
         try {
-            const res = await axios.get('https://watches-store-iml4.vercel.app//api/users');
+            const res = await axios.get('https://watches-store-iml4.vercel.app/api/users');
             setUsers(res.data);
         } catch (err) {
             console.error('خطأ في جلب بيانات الحسابات');
@@ -21,7 +21,7 @@ export default function UsersManager() {
     const handleRoleChange = async (id, newRole) => {
         if (window.confirm('هل أنت متأكد من تغيير صلاحية هذا الحساب؟')) {
             try {
-                await axios.patch(`https://watches-store-iml4.vercel.app//api/users/${id}/role`, { role: newRole });
+                await axios.patch(`https://watches-store-iml4.vercel.app/api/users/${id}/role`, { role: newRole });
                 // تحديث الجدول محلياً
                 setUsers(users.map(user => user.id === id ? { ...user, role: newRole } : user));
             } catch (err) {

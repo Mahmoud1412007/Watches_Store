@@ -16,7 +16,7 @@ export default function ProductsManager() {
 
     const fetchWatches = async () => {
         try {
-            const res = await axios.get('https://watches-store-iml4.vercel.app//api/watches');
+            const res = await axios.get('https://watches-store-iml4.vercel.app/api/watches');
             setWatches(res.data);
         } catch (err) {
             console.error(err);
@@ -27,9 +27,9 @@ export default function ProductsManager() {
         e.preventDefault();
         try {
             if (editingId) {
-                await axios.put(`https://watches-store-iml4.vercel.app//api/watches/${editingId}`, formData);
+                await axios.put(`https://watches-store-iml4.vercel.app/api/watches/${editingId}`, formData);
             } else {
-                await axios.post('https://watches-store-iml4.vercel.app//api/watches', formData);
+                await axios.post('https://watches-store-iml4.vercel.app/api/watches', formData);
             }
             // تفريغ الفورم بعد الحفظ وترجيعها للديفولت
             setFormData({ name: '', brand: '', price: '', image_url: '', description: '', is_displayed: true, category: 'رجالي' });
@@ -59,7 +59,7 @@ export default function ProductsManager() {
     const handleDelete = async (id) => {
         if(window.confirm('متأكد إنك عايز تحذف الساعة دي؟')) {
             try {
-                await axios.delete(`https://watches-store-iml4.vercel.app//api/watches/${id}`);
+                await axios.delete(`https://watches-store-iml4.vercel.app/api/watches/${id}`);
                 fetchWatches();
             } catch(err) {
                 alert('خطأ في الحذف');
@@ -69,7 +69,7 @@ export default function ProductsManager() {
 
     const toggleDisplay = async (watch) => {
         try {
-            await axios.put(`https://watches-store-iml4.vercel.app//api/watches/${watch.id}`, {
+            await axios.put(`https://watches-store-iml4.vercel.app/api/watches/${watch.id}`, {
                 ...watch,
                 is_displayed: !watch.is_displayed
             });

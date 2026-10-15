@@ -12,7 +12,7 @@ export default function InventoryManager() {
 
     const fetchWatches = async () => {
         try {
-            const res = await axios.get('https://watches-store-iml4.vercel.app//api/watches');
+            const res = await axios.get('https://watches-store-iml4.vercel.app/api/watches');
             setWatches(res.data);
             // تجهيز حالة التعديل لكل منتج
             const stockData = {};
@@ -32,7 +32,7 @@ export default function InventoryManager() {
 
     const saveStock = async (id) => {
         try {
-            await axios.patch(`https://watches-store-iml4.vercel.app//api/watches/${id}/stock`, { stock: editStock[id] });
+            await axios.patch(`https://watches-store-iml4.vercel.app/api/watches/${id}/stock`, { stock: editStock[id] });
             // تحديث الجدول المحلي بعد الحفظ
             setWatches(watches.map(w => w.id === id ? { ...w, stock: editStock[id] } : w));
             alert('تم حفظ الكمية بنجاح');

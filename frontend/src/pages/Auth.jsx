@@ -14,7 +14,7 @@ export default function Auth() {
         const endpoint = isLogin ? 'login' : 'signup';
 
         try {
-            const res = await axios.post(`https://watches-store-iml4.vercel.app//api/auth/${endpoint}`, formData);
+            const res = await axios.post(`https://watches-store-iml4.vercel.app/api/auth/${endpoint}`, formData);
 
             if (isLogin) {
                 // حفظ التوكن وبيانات اليوزر في المتصفح

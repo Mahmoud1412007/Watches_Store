@@ -18,7 +18,7 @@ export default function AccountsManager() {
     const fetchFinances = async () => {
         try {
             // بنستخدم نفس مسار الطلبات عشان نحسب منه الفلوس
-            const res = await axios.get('https://watches-store-iml4.vercel.app//api/orders');
+            const res = await axios.get('https://watches-store-iml4.vercel.app/api/orders');
             const allOrders = res.data;
             setOrders(allOrders);
 
