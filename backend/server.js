@@ -238,3 +238,4 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`🚀 السيرفر شغال على البورت ${PORT}`);
 });
+module.exports = app;

@@ -2,11 +2,11 @@ const mysql2 = require('mysql2');
 
 // إعدادات الاتصال بتاعتك (اتأكد إن اسم قاعدة البيانات صح)
 const db = mysql2.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'watch_store', // غير ده لاسم الداتا بيز بتاعتك لو مختلف
-    port: 3307 // البورت الجديد بتاعنا
+    host: 'bo4a4tjbzl45qxyilro8-mysql.services.clever-cloud.com',
+    user: 'uswisnfqxloydl4v',
+    password: 'YaBwIwXW0S05wrW4TB8V',
+    database: 'bo4a4tjbzl45qxyilro8',
+    port: 3306 
 });
 
 db.connect(err => {
