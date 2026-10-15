@@ -11,6 +11,11 @@ const jwt = require('jsonwebtoken');
 app.use(cors());
 app.use(express.json()); 
 
+app.use(cors({
+    origin: 'https://watches-store-chi.vercel.app',
+    credentials: true
+}));
+
 
 // ==========================================
 // 1. مسارات المصادقة (Auth)
