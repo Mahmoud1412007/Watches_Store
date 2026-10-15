@@ -11,7 +11,7 @@ export default function ProductDetails() {
 
     useEffect(() => {
         // بنستدعي الدالة اللي عملناها في الباك إند لجلب ساعة واحدة
-        axios.get(`http://localhost:5000/api/watches/${id}`)
+        axios.get(`https://watches-store-iml4.vercel.app//api/watches/${id}`)
              .then(res => {
                  setWatch(res.data);
                  setLoading(false);

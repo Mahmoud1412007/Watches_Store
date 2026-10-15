@@ -10,7 +10,7 @@ export default function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/contact', formData);
+            await axios.post('https://watches-store-iml4.vercel.app//api/contact', formData);
             setIsSubmitted(true);
             setTimeout(() => setIsSubmitted(false), 5000);
             setFormData({ name: '', email: '', message: '' });

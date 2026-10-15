@@ -9,7 +9,7 @@ export default function Home() {
     const [watches, setWatches] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/watches')
+        axios.get('https://watches-store-iml4.vercel.app//api/watches')
             .then(res => setWatches(res.data))
             .catch(err => console.log(err));
     }, []);

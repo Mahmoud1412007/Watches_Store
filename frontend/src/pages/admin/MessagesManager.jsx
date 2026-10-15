@@ -11,7 +11,7 @@ export default function MessagesManager() {
 
     const fetchMessages = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/contact');
+            const res = await axios.get('https://watches-store-iml4.vercel.app//api/contact');
             setMessages(res.data);
         } catch (err) {
             console.error('خطأ في جلب الرسائل');
@@ -20,7 +20,7 @@ export default function MessagesManager() {
 
     const markAsRead = async (id) => {
         try {
-            await axios.patch(`http://localhost:5000/api/contact/${id}/read`);
+            await axios.patch(`https://watches-store-iml4.vercel.app//api/contact/${id}/read`);
             setMessages(messages.map(msg => msg.id === id ? { ...msg, is_read: 1 } : msg));
         } catch (err) {
             alert('حدث خطأ');

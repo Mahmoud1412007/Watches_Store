@@ -8,7 +8,7 @@ export default function Products() {
     const [activeCategory, setActiveCategory] = useState('الكل'); // بقت بتشيل اسم التصنيف
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/watches')
+        axios.get('https://watches-store-iml4.vercel.app//api/watches')
              .then(res => setWatches(res.data))
              .catch(err => console.log(err));
     }, []);

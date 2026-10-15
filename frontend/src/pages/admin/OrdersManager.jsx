@@ -10,7 +10,7 @@ export default function OrdersManager() {
 
     const fetchOrders = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/orders');
+            const res = await axios.get('https://watches-store-iml4.vercel.app//api/orders');
             setOrders(res.data);
         } catch (err) {
             console.error('خطأ في جلب الطلبات');
@@ -19,7 +19,7 @@ export default function OrdersManager() {
 
     const handleStatusChange = async (id, newStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/api/orders/${id}/status`, { status: newStatus });
+            await axios.patch(`https://watches-store-iml4.vercel.app//api/orders/${id}/status`, { status: newStatus });
             // تحديث الجدول فوراً بدون ريفريش
             setOrders(orders.map(order => order.id === id ? { ...order, status: newStatus } : order));
         } catch (err) {
